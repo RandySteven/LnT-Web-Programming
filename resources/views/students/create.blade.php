@@ -9,11 +9,21 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="">
+                @error('name')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="">
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" placeholder="">
+                @error('phone')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Gender</label>
@@ -23,7 +33,12 @@
 
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+                <textarea class="form-control @error('address') is-invalid @enderror" name="address" id="address" rows="3"></textarea>
+                @error('address')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
