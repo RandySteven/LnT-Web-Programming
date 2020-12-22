@@ -32,6 +32,11 @@ class StudentController extends Controller
      }
      //2. kirimin data
      public function store(Request $request){
+         $request->validate([
+             'name' => 'required|min:5|max:20',
+             'phone' => 'required|max:12',
+             'address' => 'required|min:5|max:200'
+         ]);
          Student::create([
             'name' => $request->name,
             'gender' => $request->gender,
@@ -49,6 +54,11 @@ class StudentController extends Controller
      }
      //2. update satuan data
      public function update(Request $request, Student $student){
+        $request->validate([
+            'name' => 'required|min:5|max:20',
+            'phone' => 'required|max:12',
+            'address' => 'required|min:5|max:200'
+        ]);
          $student->update([
             'name' => $request->name,
             'gender' => $request->gender,
